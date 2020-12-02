@@ -1,0 +1,26 @@
+.filter {
+  &__main {
+    display: flex;
+    border: 2px solid black;
+  }
+
+  &__select-btn {
+    padding: 10px 5px;
+    flex: 1;
+    font-size: 20px;
+    border-right: 2px solid black;
+    transition: 0.2s;
+    background-color: #fff;
+    color: #000;
+    &:not(&--active):hover {
+      background-color: #ccc;
+    }
+    &:last-child {
+      border-right: none;
+    }
+    &--active {
+      background-color: green;
+      color: #fff;
+    }
+  }
+}
