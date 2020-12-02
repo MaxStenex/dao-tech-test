@@ -1,12 +1,23 @@
 .todo {
   display: flex;
   margin-bottom: 20px;
-
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
   &__text {
     font-size: 18px;
     flex: 1;
     margin-right: 20px;
     word-break: break-all;
+    cursor: pointer;
+    transition: 0.2s;
+    &:hover {
+      background-color: #fafafa;
+      height: 100%;
+    }
+    &--done {
+      text-decoration: line-through;
+    }
   }
 
   &__delete-btn {
