@@ -1,10 +1,17 @@
+import { TodoType } from "./reducer";
+
 export enum TodosActionTypes {
   ADD_TODO = "ADD_TODO",
   DELETE_TODO = "DELETE_TODO",
   TOGGLE_TODO = "TOGGLE_TODO",
+  FILTER_TODOS = "FILTER_TODOS",
 }
 
-export type TodosActions = AddTodoType | DeleteTodoType | ToggleTodoType;
+export type TodosActions =
+  | AddTodoType
+  | DeleteTodoType
+  | ToggleTodoType
+  | FilterTodosType;
 
 type AddTodoType = {
   type: TodosActionTypes.ADD_TODO;
@@ -50,6 +57,22 @@ export const toggleTodo = (id: number): ToggleTodoType => {
     type: TodosActionTypes.TOGGLE_TODO,
     payload: {
       id,
+    },
+  };
+};
+
+type FilterTodosType = {
+  type: TodosActionTypes.FILTER_TODOS;
+  payload: {
+    filteredTodos: Array<TodoType>;
+  };
+};
+
+export const filterTodos = (filteredTodos: Array<TodoType>): FilterTodosType => {
+  return {
+    type: TodosActionTypes.FILTER_TODOS,
+    payload: {
+      filteredTodos,
     },
   };
 };

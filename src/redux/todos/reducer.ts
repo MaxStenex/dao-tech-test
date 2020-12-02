@@ -8,10 +8,12 @@ export type TodoType = {
 
 export type TodosStateType = {
   allTodos: Array<TodoType>;
+  filteredTodos: Array<TodoType>;
 };
 
 const initialState: TodosStateType = {
   allTodos: [],
+  filteredTodos: [],
 };
 
 const todosReducer = (state = initialState, action: TodosActions): TodosStateType => {
@@ -39,6 +41,12 @@ const todosReducer = (state = initialState, action: TodosActions): TodosStateTyp
           (todo: TodoType): TodoType =>
             todo.id === action.payload.id ? { ...todo, isDone: !todo.isDone } : todo
         ),
+      };
+    }
+    case TodosActionTypes.FILTER_TODOS: {
+      return {
+        ...state,
+        filteredTodos: action.payload.filteredTodos,
       };
     }
 

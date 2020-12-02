@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { addTodo } from "../redux/todos/actions";
 import "../styles/Header.scss";
 
-const minimumSymbols: number = 6;
+const maximumSymbols: number = 25;
 
 const Header: React.FC = () => {
   const [todoText, setTodoText] = useState("");
@@ -12,7 +12,7 @@ const Header: React.FC = () => {
 
   const onTodoAdd = (evt: React.FormEvent) => {
     evt.preventDefault();
-    if (todoText.trim().length < minimumSymbols) {
+    if (todoText.trim().length > maximumSymbols) {
       return setError(true);
     } else {
       dispatch(addTodo(todoText));
@@ -43,7 +43,7 @@ const Header: React.FC = () => {
           </form>
           {error ? (
             <span className="header__error">
-              Текст должен быть больше {minimumSymbols} символов
+              Текст должен быть меньше {maximumSymbols} символов
             </span>
           ) : null}
         </div>

@@ -6,13 +6,13 @@ import "../styles/TodoList.scss";
 import { Todo } from "./";
 
 const TodoList: React.FC = () => {
-  const allTodos = useSelector((state: RootStateType) => state.todos.allTodos);
+  const filteredTodos = useSelector((state: RootStateType) => state.todos.filteredTodos);
 
   return (
     <section className="todolist">
       <div className="container">
         <ul className="todolist__list">
-          {allTodos.map((todo: TodoType) => (
+          {filteredTodos.map((todo: TodoType) => (
             <Todo key={todo.id} {...todo} />
           ))}
         </ul>
